@@ -10,4 +10,58 @@
 
 {{post.body|linebreaks}}
 
+<p>
+	<a href="{% url 'blogs:post_share' post.id %}">
+		Share this post
+	</a>
+</p>
+
+
+
+{% with comments.count as total_comments %}
+<h2>
+	{{ total_comments }} comment{{total_comments|pluralize}}
+</h2>
+
+{% endwith %}
+
+
+{% for comment in comments %}
+
+<div class="comment">
+	<p class="info">
+		comment {{forllop.counter }} by <b>{{comment.name}}</b> <i>{{comment.created}}</i>
+	</p>
+	{{ comment.body|linebreaks }}
+</div>
+{% empty %}
+<p>There are no comments yet. </p>
+{% endfor %}
+
+<h2>Similar Post</h2>
+{% for post in similar_posts %}
+<p>
+	<a href="{{ post.get_absolute_url }}">{{post.title}}</a>
+</p>
+{% empty %}
+
+There are no similar posts yet.
+
+{% endfor %}
+
+
+{% if new_comment %}
+<h2>Your comment has been added.</h2>
+
+
+{% else %}
+<h2>Add a new comment</h2>
+<form action="." method="POST">
+	{{comment_form.as_p}}
+	{% csrf_token %}
+	<p><input type="submit" class="btn btn-primary" name="Add comment"></p>
+</form>
+{% endif %}
+
+
 {% endblock %}

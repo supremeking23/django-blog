@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blogs.apps.BlogsConfig'
+    'blogs.apps.BlogsConfig',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,28 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# For Email
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# The SMTP server host; the default is localhost
+EMAIL_HOST: 'smtp.gmail.com'
+# The SMTP port; the default is 25
+EMAIL_PORT:'587'
+#username for the smtp server
+EMAIL_HOST_USER: 'icjfuncion@gmail.com'
+#PASSWORD FOR THE SMTP SERVER
+EMAIL_HOST_PASSWORD: 'ivan23nami'
+# whether to use a TLS secure connection
+EMAIL_USE_TLS: True
+#whether to use an implicit TLS secure connection
+#EMAIL_USE_SSL:
+
+
+#if you cannot use an SMTP server
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Static files (CSS, JavaScript, Images)

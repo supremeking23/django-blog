@@ -1,4 +1,5 @@
 Django==2.2.9
+django-taggit==0.22.2
 Pillow==7.0.0
 psycopg2==2.8.4
 pytz==2019.3
