@@ -1,6 +1,5 @@
-This is the 3rd part of building an online blog system using django
+The last chapter of building a Blogging app in Django
 
 It has the following features:
-	1. Comment System
-	2. Tagging System
-	3. Share it via Email (console only)
+	1. create a custom django template
+	2. create a full-text search engine

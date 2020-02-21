@@ -12,8 +12,18 @@
 {% else %}
 
 <h1>Share "{{post.title}}" by email</h1>
+
+{% load widget_tweaks %}
+
 <form action="." method="POST">
-	{{form.as_p}}
+	{% for field in form %}
+	<div class="form-group">
+		{{ field.errors }}
+		{{field.label_tag }}
+		{% render_field field class="form-control" %}
+	</div>
+	{% endfor %}
+	
 	{% csrf_token %}
 	<input type="submit" class="btn btn-primary" value="Send e-mail" name="">
 </form>

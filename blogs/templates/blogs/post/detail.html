@@ -1,4 +1,5 @@
 {% extends "blogs/base.html" %}
+{% load blog_tags %}
 {% block title %} {{post.title}} {% endblock %}
 
 {%block content %}
@@ -8,7 +9,8 @@
 	Published {{post.publish}} by {{post.author}}
 </p>
 
-{{post.body|linebreaks}}
+<!--- before linebreaks--->
+{{post.body|markdown}}
 
 <p>
 	<a href="{% url 'blogs:post_share' post.id %}">
@@ -56,8 +58,18 @@ There are no similar posts yet.
 
 {% else %}
 <h2>Add a new comment</h2>
+
+{% load widget_tweaks %}
+
+
 <form action="." method="POST">
-	{{comment_form.as_p}}
+	{% for field in comment_form %}
+	<div class="form-group">
+		{{field.errors}}
+		{{field.label_tag}}
+		{% render_field field class="form-control" %}
+	</div>
+	{% endfor %}
 	{% csrf_token %}
 	<p><input type="submit" class="btn btn-primary" name="Add comment"></p>
 </form>
