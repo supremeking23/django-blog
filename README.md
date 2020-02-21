@@ -1,5 +1,4 @@
-The last chapter of building a Blogging app in Django
+#Enhance Django app
 
-It has the following features:
-	1. create a custom django template
-	2. create a full-text search engine
+	1. added a navbar to all pages
+	2. added a search feature on the navbar
